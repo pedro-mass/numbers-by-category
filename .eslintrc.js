@@ -1,8 +1,14 @@
 module.exports = {
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
-    'project': './tsconfig.json', // Required to have rules that rely on Types.
-    'tsconfigRootDir': './'
+    // 'project': './tsconfig.json', // Required to have rules that rely on Types.
+    // 'tsconfigRootDir': './'
+    "sourceType": "module",
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
   },
   'extends': [
     'plugin:@typescript-eslint/recommended', // Out of the box Typescript rules
@@ -19,6 +25,9 @@ module.exports = {
   'rules': {
     '@typescript-eslint/no-use-before-define': 'off', // Allows us to hoist variables and functions which I am a fan of, functions not variables that is.
     '@typescript-eslint/no-explicit-any': 'off', // Too strict for my case, sometimes I need an any type
+    '@typescript-eslint/interface-name-prefix': [2, {
+      "prefixWithI": "always"
+    }],
     '@typescript-eslint/member-delimiter-style': ['error', { // Prevents us from using any delimiter for interface properties.
       'multiline': {
         'delimiter': 'none',
@@ -36,6 +45,12 @@ module.exports = {
       semi: false,
       singleQuote: true,
       trailingComma: "es5",
-    }]
+    }],
+    // "sort-imports": ["error", {
+    //   "ignoreCase": false,
+    //   "ignoreDeclarationSort": false,
+    //   "ignoreMemberSort": false,
+    //   "memberSyntaxSortOrder": ["all", "multiple", "single", "none"]
+    // }]
   }
 }
