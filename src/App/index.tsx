@@ -108,7 +108,7 @@ function CategoryWithSubs({ category }: { category: Category }) {
   return (
     <span className="">
       <span onClick={toggle}>
-        <span>{category.name}</span>: <span>{category.total}</span> |{' '}
+        <span>{category.name}</span>: <span>{category.total}</span>{' '}
         <span>({(category.subCategories || []).length} sub-categories)</span>{' '}
         <span>{action}</span>
       </span>
