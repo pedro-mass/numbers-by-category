@@ -1,13 +1,31 @@
 {
   "name": "numbers-by-category",
   "version": "0.1.0",
+  "homepage": "https://pedro-mass.github.io/numbers-by-category",
   "private": true,
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "lint": "npx eslint --fix ./src",
+    "format:js": "npx eslint --fix ./src",
+    "format:misc": "prettier --write \"**/*.{css,json,md,scss}\"",
+    "lint": "yarn format:js && yarn format:misc",
     "start": "react-scripts start",
     "test": "react-scripts test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*{js|jsx|ts|tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{css,json,md,scss}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@types/jest": "^24.0.18",
@@ -51,6 +69,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
     "prettier": "^1.18.2"
   }
 }
