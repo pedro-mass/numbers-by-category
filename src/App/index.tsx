@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState } from 'react'
 
-import './index.css'
+import './index.scss'
 
 interface Category {
   name: string
@@ -48,12 +48,16 @@ const categories: Category[] = [
 ]
 
 const App: React.FC = () => {
+  const totalCategory = {
+    name: 'total',
+    total: 5000,
+    hasSubcategories: true,
+    subCategories: categories,
+  }
+
   return (
     <div className="App center">
-      <CategoryList categories={categories} />
-      <button>Add Category</button>
-      <button>Reset Balances</button>
-      <button>Delete Categories</button>
+      <Category category={totalCategory} />
     </div>
   )
 }
@@ -75,7 +79,7 @@ function CategoryList({ categories }: { categories: Category[] | undefined }) {
 function Category({ category }: { category: Category }) {
   return (
     <div className="category">
-      <button>delete</button>
+      <button>X</button>
       {category.hasSubcategories ? (
         <CategoryWithSubs category={category} />
       ) : (
@@ -104,14 +108,21 @@ function CategoryWithSubs({ category }: { category: Category }) {
   const action = expanded ? '-' : '+'
 
   return (
-    <>
+    <span className="">
       <span onClick={toggle}>
         <span>{category.name}</span>: <span>{category.total}</span> |{' '}
         <span>({(category.subCategories || []).length} sub-categories)</span>{' '}
         <span>{action}</span>
       </span>
-      {expanded && <CategoryList categories={category.subCategories} />}
-    </>
+      {expanded && (
+        <div className="subcategories">
+          <CategoryList categories={category.subCategories} />
+          <button>Add Category</button>
+          <button>Reset Balances</button>
+          <button>Delete Categories</button>
+        </div>
+      )}
+    </span>
   )
 }
 
