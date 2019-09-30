@@ -23,3 +23,4 @@ If a category has subcategories, it's total is computed by summing the total of 
 - [ ] styling
   - [ ] subCategories (indenting)
   - [ ] buttons
+- [ ] deploy
