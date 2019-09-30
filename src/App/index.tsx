@@ -17,7 +17,7 @@ const categories: Category[] = [
   },
   {
     name: "monthly",
-    total: 170,
+    total: 530,
     hasSubcategories: true,
     subCategories: [
       {
@@ -27,6 +27,21 @@ const categories: Category[] = [
       {
         name: "internet",
         total: 70
+      },
+      {
+        name: "overhead",
+        total: 360,
+        hasSubcategories: true,
+        subCategories: [
+          {
+            name: "pedro",
+            total: 100
+          },
+          {
+            name: "crystal",
+            total: 260
+          }
+        ]
       }
     ]
   }
