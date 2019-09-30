@@ -79,7 +79,7 @@ function CategoryList({ categories }: { categories: Category[] | undefined }) {
 function Category({ category }: { category: Category }) {
   return (
     <div className="category">
-      <button>X</button>
+      <button>x</button>{' '}
       {category.hasSubcategories ? (
         <CategoryWithSubs category={category} />
       ) : (
@@ -92,10 +92,8 @@ function Category({ category }: { category: Category }) {
 function CategorySimple({ category }: { category: Category }) {
   return (
     <>
-      <span>{category.name}</span>:{' '}
-      <span>
-        <NumberInput value={category.total} />
-      </span>
+      <span>{category.name}</span>: <NumberInput value={category.total} />{' '}
+      <button>split</button>
     </>
   )
 }
@@ -117,9 +115,9 @@ function CategoryWithSubs({ category }: { category: Category }) {
       {expanded && (
         <div className="subcategories">
           <CategoryList categories={category.subCategories} />
-          <button>Add Category</button>
-          <button>Reset Balances</button>
-          <button>Delete Categories</button>
+          <button>add category</button>
+          <button>reset balances</button>
+          <button>delete categories</button>
         </div>
       )}
     </span>
