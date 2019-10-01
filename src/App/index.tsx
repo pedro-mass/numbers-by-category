@@ -7,8 +7,8 @@ import './index.scss'
 const App: React.FC = () => {
   const totalCategory = new CategoryStore({
     name: 'total',
-    total: 5000,
   })
+  totalCategory.split()
 
   return (
     <div className="App center">

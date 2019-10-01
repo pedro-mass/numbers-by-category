@@ -12,7 +12,7 @@ function CategoryList({
     <div className="category-list">
       {categories ? (
         categories.map(category => (
-          <Category key={category.name} category={category} />
+          <Category key={category.id} category={category} />
         ))
       ) : (
         <p>No Categories found</p>

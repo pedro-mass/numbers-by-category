@@ -8,6 +8,13 @@ function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
   const [expanded, setExpanded] = useState(true)
   const toggle = (): void => setExpanded(curr => !curr)
   const action = expanded ? '-' : '+'
+
+  const deleteCategories = (): void => {
+    category.deleteSubcategories()
+  }
+
+  const addCategory = (): void => category.addCategory()
+
   return (
     <span className="">
       <span>
@@ -20,9 +27,9 @@ function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
       {expanded && (
         <div className="subcategories">
           <CategoryList categories={category.subcategories} />
-          <button>add category</button>
+          <button onClick={addCategory}>add category</button>
           <button>reset balances</button>
-          <button>delete categories</button>
+          <button onClick={deleteCategories}>delete categories</button>
         </div>
       )}
     </span>

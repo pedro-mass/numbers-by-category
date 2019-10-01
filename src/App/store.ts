@@ -1,6 +1,7 @@
 import { observable, decorate, action, computed, autorun } from 'mobx'
 
 export class Category {
+  id = Math.random()
   name = ''
   _total: number | undefined = undefined
   subcategories?: Category[] = []
@@ -72,7 +73,7 @@ export class Category {
     return this.subcategories != null && this.subcategories.length > 0
   }
 
-  addCategory(category: Category): void {
+  addCategory(category: Category = new Category()): void {
     if (this.subcategories == null) this.subcategories = []
     this.subcategories.push(category)
   }
@@ -88,20 +89,20 @@ export class Category {
   }
 
   split(): void {
-    this.addCategory(new Category())
+    this.addCategory()
   }
 }
 
 decorate(Category, {
-  name: observable,
   _total: observable,
-  subcategories: observable,
-  setName: action,
-  total: computed,
-  resetTotal: action,
-  hasSubcategories: computed,
   addCategory: action,
-  removeCategory: action,
   deleteSubcategories: action,
+  hasSubcategories: computed,
+  name: observable,
+  removeCategory: action,
+  resetTotal: action,
+  setName: action,
   split: action,
+  subcategories: observable,
+  total: computed,
 })
