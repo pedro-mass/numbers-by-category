@@ -4,7 +4,7 @@ export class Category {
   id = Math.random()
   @observable name = ''
   @observable _total: number | undefined = undefined
-  @observable subcategories?: Category[] = []
+  @observable _subcategories?: Category[] = []
 
   constructor(input?: {
     name?: string
@@ -73,6 +73,15 @@ export class Category {
   }
 
   @computed
+  get subcategories(): Category[] {
+    return this._subcategories || []
+  }
+
+  set subcategories(categories: Category[]) {
+    this._subcategories = categories
+  }
+
+  @computed
   get hasSubcategories(): boolean {
     return this.subcategories != null && this.subcategories.length > 0
   }
@@ -85,7 +94,6 @@ export class Category {
 
   @action
   removeCategory(category: Category): void {
-    if (this.subcategories == null) return
     const index = this.subcategories.findIndex(c => c === category)
     this.subcategories.splice(index, 1)
   }
@@ -93,6 +101,11 @@ export class Category {
   @action
   deleteSubcategories(): void {
     this.subcategories = []
+  }
+
+  @action
+  resetSubcategoriesTotal(): void {
+    this.subcategories.forEach(category => category.resetTotal())
   }
 
   @action

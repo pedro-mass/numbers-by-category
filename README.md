@@ -28,7 +28,7 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [x] delete categories
   - [x] add category
   - [x] add support for @decorators
-  - [ ] reset balances
+  - [x] reset balances
   - [ ] delete category
   - [ ] button: re-add total category if all categories have been deleted
   - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
