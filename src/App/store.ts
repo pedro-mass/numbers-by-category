@@ -2,7 +2,7 @@ import { observable, decorate, action, computed, autorun } from 'mobx'
 
 export class Category {
   name = ''
-  _total = 0
+  _total: number | undefined = undefined
   subcategories?: Category[] = []
 
   constructor(input?: {
@@ -31,23 +31,30 @@ export class Category {
     this.name = val
   }
 
-  get total(): number {
+  get total(): number | string {
     if (!this.hasSubcategories) {
-      return this._total
+      return this._total === undefined ? '' : this._total
     }
 
-    return (this.subcategories || []).reduce(
-      (total, current) => total + current.total,
-      0
-    )
+    return (this.subcategories || []).reduce((total, current) => {
+      if (typeof current.total === 'string') {
+        return total
+      }
+
+      return total + (current.total || 0)
+    }, 0)
   }
 
-  set total(value: number) {
+  set total(value: number | string) {
     if (this.hasSubcategories) {
-      // return
       throw new Error(
         "Can't set value directly. Update or delete subcategories."
       )
+    }
+
+    if (typeof value === 'string') {
+      this._total = undefined
+      return
     }
 
     this._total = value

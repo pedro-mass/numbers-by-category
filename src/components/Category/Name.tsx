@@ -12,6 +12,7 @@ function CategoryName({ category }: { category: Category }): JSX.Element {
   }
 
   const submit = (): void => {
+    if (!name || name.length === 0) return
     toggle()
     category.setName(name)
   }

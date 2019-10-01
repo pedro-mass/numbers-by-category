@@ -8,7 +8,7 @@ function CategorySimple({ category }: { category: ICategory }): JSX.Element {
   const split = (): void => category.split()
 
   const updateTotal = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    category.total = Number(e.target.value)
+    category.total = e.target.value ? Number(e.target.value) : ''
   }
 
   return (
