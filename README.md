@@ -16,10 +16,16 @@ If a category has subcategories, it's total is computed by summing the total of 
   - no: enter the total as normal
   - yes: create more categories nested within this one
 
-## todo
+## things left
 
-- [ ] introduce mobX
+- [x] introduce mobX
 - [ ] wire up all the actions
+  - [x] update name
+  - [ ] update total
+  - [ ] add split
+  - [ ] add category
+  - [ ] reset balances
+  - [ ] delete categories
 - [ ] styling
   - [ ] subCategories (indenting)
   - [ ] buttons
