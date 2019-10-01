@@ -1,12 +1,13 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import { Category as ICategory } from '../../App/store'
-import { Category } from '.'
+import Category from '.'
 
-export function CategoryList({
+function CategoryList({
   categories,
 }: {
   categories: ICategory[] | undefined
-}) {
+}): JSX.Element {
   return (
     <div className="category-list">
       {categories ? (
@@ -19,3 +20,5 @@ export function CategoryList({
     </div>
   )
 }
+
+export default observer(CategoryList)

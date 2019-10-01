@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { observer } from 'mobx-react'
 import { Category as ICategory } from '../../App/store'
-import { CategoryList } from './List'
+import CategoryList from './List'
 
-export function CategoryWithSubs({ category }: { category: ICategory }) {
+function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
   const [expanded, setExpanded] = useState(false)
   const toggle = (): void => setExpanded(curr => !curr)
   const action = expanded ? '-' : '+'
@@ -24,3 +25,5 @@ export function CategoryWithSubs({ category }: { category: ICategory }) {
     </span>
   )
 }
+
+export default observer(CategoryWithSubs)

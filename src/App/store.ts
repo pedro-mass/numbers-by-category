@@ -1,4 +1,4 @@
-import { observable, decorate, action, computed } from 'mobx'
+import { observable, decorate, action, computed, autorun } from 'mobx'
 
 export class Category {
   name = ''
@@ -16,6 +16,15 @@ export class Category {
     if (name) this.name = name
     if (total) this.total = total
     if (subcategories) this.subcategories = subcategories || []
+
+    autorun(
+      () => {
+        console.log(JSON.stringify(this, null, 2))
+      },
+      {
+        delay: 250,
+      }
+    )
   }
 
   setName(val: string): void {
@@ -70,6 +79,10 @@ export class Category {
   deleteSubcategories(): void {
     this.subcategories = []
   }
+
+  split(): void {
+    this.addCategory(new Category())
+  }
 }
 
 decorate(Category, {
@@ -83,4 +96,5 @@ decorate(Category, {
   addCategory: action,
   removeCategory: action,
   deleteSubcategories: action,
+  split: action,
 })
