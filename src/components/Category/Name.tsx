@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 import useToggle from '../../useToggle'
 import { Category } from '../../App/store'
 
 function CategoryName({ category }: { category: Category }): JSX.Element {
-  const [editing, toggle] = useToggle()
+  const [name, setName] = useState(category.name)
+  const [editing, toggle] = useToggle(category.name === '')
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    category.setName(e.target.value)
+    setName(e.target.value)
+  }
+
+  const submit = (): void => {
+    toggle()
+    category.setName(name)
   }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.keyCode === 13) {
-      toggle()
+      submit()
     }
   }
 
@@ -20,11 +26,13 @@ function CategoryName({ category }: { category: Category }): JSX.Element {
     <>
       {editing ? (
         <span onDoubleClick={toggle}>
-          {/* todo: onEnter: toggle state (and submit?) */}
           <input
-            value={category.name}
+            autoFocus
+            placeholder="category name..."
+            value={name}
             onChange={onChange}
             onKeyDown={onKeyDown}
+            onBlur={submit}
           />
         </span>
       ) : (

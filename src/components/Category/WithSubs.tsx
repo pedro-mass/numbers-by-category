@@ -2,17 +2,20 @@ import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 import { Category as ICategory } from '../../App/store'
 import CategoryList from './List'
+import CategoryName from './Name'
 
 function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(true)
   const toggle = (): void => setExpanded(curr => !curr)
   const action = expanded ? '-' : '+'
   return (
     <span className="">
-      <span onClick={toggle}>
-        <span>{category.name}</span>: <span>{category.total}</span>{' '}
-        <span>({(category.subcategories || []).length} sub-categories)</span>{' '}
-        <span>{action}</span>
+      <span>
+        <CategoryName category={category} />: <span>{category.total}</span>{' '}
+        <span onClick={toggle}>
+          ({(category.subcategories || []).length} sub-categories){' '}
+          <span>{action}</span>
+        </span>
       </span>
       {expanded && (
         <div className="subcategories">

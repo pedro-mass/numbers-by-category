@@ -22,10 +22,13 @@ If a category has subcategories, it's total is computed by summing the total of 
 - [ ] wire up all the actions
   - [x] update name
   - [x] update total
-  - [ ] add split
+  - [x] add split
+  - [x] change name onEnterPressed/onBlur
+  - [ ] allow number to be nothing
   - [ ] add category
   - [ ] reset balances
   - [ ] delete categories
+  - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
 - [ ] styling
   - [ ] subCategories (indenting)
   - [ ] buttons
