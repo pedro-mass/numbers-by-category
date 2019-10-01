@@ -18,7 +18,6 @@ If a category has subcategories, it's total is computed by summing the total of 
 
 ## todo
 
-- [ ] introduce mobX
 - [ ] wire up all the actions
 - [ ] styling
   - [ ] subCategories (indenting)
