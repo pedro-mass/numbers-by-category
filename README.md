@@ -32,6 +32,10 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [ ] delete category
   - [ ] button: re-add total category if all categories have been deleted
   - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
+  - [ ] pass the store around with context?
+    - might not be needed b/c it seems that every level requires an action or prop off of category
+  - [ ] verify that all `observer`s are actually needed
+    - this was sprinkled liberally to get things working and the docs said there was no downside (https://mobx.js.org/refguide/observer-component.html -> Characteristics of observer components -> "you cannot under-subscribe or over-subscribe")
 - [ ] styling
   - [ ] subCategories (indenting)
   - [ ] buttons
