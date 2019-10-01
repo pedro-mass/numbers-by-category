@@ -1,7 +1,11 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
+
 import Category, { CategoryModel } from '../components/Category'
 import './index.scss'
+
+if (process.env.REACT_APP_USE_MOBX_LOGGER) {
+  import('mobx-logger').then(logger => logger.enableLogging())
+}
 
 const App: React.FC = () => {
   const totalCategory = new CategoryModel({
