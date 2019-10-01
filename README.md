@@ -21,7 +21,7 @@ If a category has subcategories, it's total is computed by summing the total of 
 - [x] introduce mobX
 - [ ] wire up all the actions
   - [x] update name
-  - [ ] update total
+  - [x] update total
   - [ ] add split
   - [ ] add category
   - [ ] reset balances
