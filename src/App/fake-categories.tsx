@@ -1,4 +1,4 @@
-import { Category } from './store'
+import { CategoryModel as Category } from '../components/Category'
 
 export const categories: Category[] = [
   new Category({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 import useToggle from '../../useToggle'
-import { Category } from '../../App/store'
+import { Category } from './model'
 
 function CategoryName({ category }: { category: Category }): JSX.Element {
   const [name, setName] = useState(category.name)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Category as ICategory } from '../../App/store'
+import { Category as ICategory } from './model'
 import NumberInput from '../NumberInput'
 import CategoryName from './Name'
 

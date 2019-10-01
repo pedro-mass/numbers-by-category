@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
-import { Category as ICategory } from '../../App/store'
+import { Category as ICategory } from './model'
 import CategoryList from './List'
 import CategoryName from './Name'
 

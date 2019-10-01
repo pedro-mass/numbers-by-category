@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryWithSubs from './WithSubs'
 import CategorySimple from './Simple'
-import { Category as ICategory } from '../../App/store'
+import { Category as ICategory } from './model'
 import PrettyPrint from '../PrettyPrint'
 import { observer } from 'mobx-react'
 
@@ -18,5 +18,7 @@ function Category({ category }: { category: ICategory }): JSX.Element {
     </div>
   )
 }
+
+export { ICategory as CategoryModel }
 
 export default observer(Category)

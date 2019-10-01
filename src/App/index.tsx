@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
-import Category from '../components/Category'
-import { Category as CategoryStore } from './store'
+import Category, { CategoryModel } from '../components/Category'
 import './index.scss'
 
 const App: React.FC = () => {
-  const totalCategory = new CategoryStore({
+  const totalCategory = new CategoryModel({
     name: 'total',
   })
   totalCategory.split()
