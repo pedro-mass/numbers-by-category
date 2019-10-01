@@ -1,10 +1,10 @@
-import { observable, decorate, action, computed, autorun } from 'mobx'
+import { observable, action, computed, autorun } from 'mobx'
 
 export class Category {
   id = Math.random()
-  name = ''
-  _total: number | undefined = undefined
-  subcategories?: Category[] = []
+  @observable name = ''
+  @observable _total: number | undefined = undefined
+  @observable subcategories?: Category[] = []
 
   constructor(input?: {
     name?: string
@@ -28,10 +28,12 @@ export class Category {
     )
   }
 
+  @action
   setName(val: string): void {
     this.name = val
   }
 
+  @computed
   get total(): number | string {
     if (!this.hasSubcategories) {
       return this._total === undefined ? '' : this._total
@@ -61,6 +63,7 @@ export class Category {
     this._total = value
   }
 
+  @action
   resetTotal(): void {
     try {
       this.total = 0
@@ -69,40 +72,31 @@ export class Category {
     }
   }
 
+  @computed
   get hasSubcategories(): boolean {
     return this.subcategories != null && this.subcategories.length > 0
   }
 
+  @action
   addCategory(category: Category = new Category()): void {
     if (this.subcategories == null) this.subcategories = []
     this.subcategories.push(category)
   }
 
+  @action
   removeCategory(category: Category): void {
     if (this.subcategories == null) return
     const index = this.subcategories.findIndex(c => c === category)
     this.subcategories.splice(index, 1)
   }
 
+  @action
   deleteSubcategories(): void {
     this.subcategories = []
   }
 
+  @action
   split(): void {
     this.addCategory()
   }
 }
-
-decorate(Category, {
-  _total: observable,
-  addCategory: action,
-  deleteSubcategories: action,
-  hasSubcategories: computed,
-  name: observable,
-  removeCategory: action,
-  resetTotal: action,
-  setName: action,
-  split: action,
-  subcategories: observable,
-  total: computed,
-})
