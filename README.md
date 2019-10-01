@@ -27,6 +27,7 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [x] allow number to be nothing
   - [x] delete categories
   - [x] add category
+  - [ ] use craco to bring in mobx decorators: https://github.com/mobxjs/awesome-mobx/issues/75
   - [ ] reset balances
   - [ ] delete category
   - [ ] button: re-add total category if all categories have been deleted
