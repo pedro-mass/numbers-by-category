@@ -11,7 +11,6 @@ const App: React.FC = () => {
   const totalCategory = new CategoryModel({
     name: 'total',
   })
-  totalCategory.split()
 
   return (
     <div className="App center">
