@@ -19,7 +19,7 @@ If a category has subcategories, it's total is computed by summing the total of 
 ## things left
 
 - [x] introduce mobX
-- [ ] wire up all the actions
+- [x] wire up all the actions
   - [x] update name
   - [x] update total
   - [x] add split
