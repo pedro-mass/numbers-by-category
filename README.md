@@ -23,3 +23,5 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [ ] subCategories (indenting)
   - [ ] buttons
 - [ ] deploy
+
+> the [mobx branch](https://github.com/pedro-mass/numbers-by-category/tree/mobx#numbers-by-category) is much further ahead, and has improvements that I'll bring back into `master` once it's completed
