@@ -95,7 +95,7 @@ export class Category {
   @action
   removeCategory(category: Category): void {
     const index = this.subcategories.findIndex(c => c === category)
-    this.subcategories.splice(index, 1)
+    if (index > -1) this.subcategories.splice(index, 1)
   }
 
   @action
