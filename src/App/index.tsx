@@ -3,7 +3,7 @@ import React from 'react'
 import Category, { CategoryModel } from '../components/Category'
 import './index.scss'
 
-if (process.env.REACT_APP_USE_MOBX_LOGGER) {
+if (process.env.REACT_APP_USE_MOBX_LOGGER === 'true') {
   import('mobx-logger').then(logger => logger.enableLogging())
 }
 
