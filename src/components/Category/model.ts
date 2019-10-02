@@ -1,4 +1,4 @@
-import { observable, action, computed, autorun } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 export class Category {
   id = Math.random()
@@ -17,15 +17,6 @@ export class Category {
     if (name) this.name = name
     if (total) this.total = total
     if (subcategories) this.subcategories = subcategories || []
-
-    autorun(
-      () => {
-        console.log(JSON.stringify(this, null, 2))
-      },
-      {
-        delay: 250,
-      }
-    )
   }
 
   @action

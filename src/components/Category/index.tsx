@@ -2,7 +2,6 @@ import React from 'react'
 import CategoryWithSubs from './WithSubs'
 import CategorySimple from './Simple'
 import { Category as ICategory } from './model'
-import PrettyPrint from '../PrettyPrint'
 import { observer } from 'mobx-react'
 
 function Category({ category }: { category: ICategory }): JSX.Element {
@@ -14,7 +13,6 @@ function Category({ category }: { category: ICategory }): JSX.Element {
       ) : (
         <CategorySimple category={category} />
       )}
-      <PrettyPrint category={category} />
     </div>
   )
 }
