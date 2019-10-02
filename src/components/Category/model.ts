@@ -5,18 +5,21 @@ export class Category {
   @observable name = ''
   @observable _total: number | undefined = undefined
   @observable _subcategories?: Category[] = []
+  @observable.ref parent: Category | undefined = undefined
 
   constructor(input?: {
     name?: string
-    total?: number
+    total?: number | string | undefined
     subcategories?: Category[]
+    parent?: Category
   }) {
     if (!input) return this
 
-    const { name, total, subcategories } = input
+    const { name, total, subcategories, parent } = input
     if (name) this.name = name
     if (total) this.total = total
     if (subcategories) this.subcategories = subcategories || []
+    if (parent) this.parent = parent
   }
 
   @action
@@ -80,6 +83,8 @@ export class Category {
   @action
   addCategory(category: Category = new Category()): void {
     if (this.subcategories == null) this.subcategories = []
+    if (!category.parent) category.parent = this
+
     this.subcategories.push(category)
   }
 
@@ -101,6 +106,21 @@ export class Category {
 
   @action
   split(): void {
-    this.addCategory()
+    this.addCategory(
+      new Category({
+        total: this.total,
+      })
+    )
+  }
+
+  @computed
+  get hasParent(): boolean {
+    return this.parent != null
+  }
+
+  @action
+  delete(): void {
+    if (!this.parent) throw new Error('Cannot delete without parent')
+    this.parent.removeCategory(this)
   }
 }

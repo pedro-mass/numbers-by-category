@@ -29,9 +29,12 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [x] add category
   - [x] add support for @decorators
   - [x] reset balances
-  - [ ] delete category
-  - [ ] button: re-add total category if all categories have been deleted
+  - [x] delete category
+  - ~~[ ] button: re-add total category if all categories have been deleted~~
+    - not needed. Deletion is only allowed when current category is part of another's sub-category
+    - the other strategy would be to switch the store to be a `Array<Category>`, instead of starting at just `Category`
 - [ ] improvements
+  - [ ] shift concept of the "Total" category, instead have the store be a list of categories?
   - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
   - [ ] pass the store around with context?
     - might not be needed b/c it seems that every level requires an action or prop off of category

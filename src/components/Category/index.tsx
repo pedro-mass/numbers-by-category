@@ -5,9 +5,11 @@ import { Category as ICategory } from './model'
 import { observer } from 'mobx-react'
 
 function Category({ category }: { category: ICategory }): JSX.Element {
+  const deleteCategory = (): void => category.delete()
+
   return (
     <div className="category">
-      <button>x</button>{' '}
+      {category.hasParent && <button onClick={deleteCategory}>x</button>}{' '}
       {category.hasSubcategories ? (
         <CategoryWithSubs category={category} />
       ) : (
