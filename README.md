@@ -36,6 +36,8 @@ If a category has subcategories, it's total is computed by summing the total of 
 - [ ] improvements
   - [ ] shift concept of the "Total" category, instead have the store be a list of categories?
   - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
+  - [ ] use Math library for financial calculations
+    - b/c in javascript: `1.1 + 0.3 = 1.4000000000000001`
   - [ ] pass the store around with context?
     - might not be needed b/c it seems that every level requires an action or prop off of category
   - [ ] verify that all `observer`s are actually needed
