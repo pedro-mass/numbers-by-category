@@ -3,6 +3,9 @@ import { observer } from 'mobx-react'
 import useToggle from '../../useToggle'
 import { Category } from './model'
 
+const isEmptyString = (str: undefined | null | string): boolean =>
+  str == null || str.replace(/\s/g, '').length === 0
+
 function CategoryName({ category }: { category: Category }): JSX.Element {
   const [name, setName] = useState(category.name)
   const [editing, toggle] = useToggle(category.name === '')
@@ -12,7 +15,8 @@ function CategoryName({ category }: { category: Category }): JSX.Element {
   }
 
   const submit = (): void => {
-    if (!name || name.length === 0) return
+    console.log({ name })
+    if (isEmptyString(name)) return
     toggle()
     category.setName(name)
   }
