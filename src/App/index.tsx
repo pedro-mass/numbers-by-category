@@ -8,9 +8,19 @@ if (process.env.REACT_APP_USE_MOBX_LOGGER === 'true') {
   import('mobx-logger').then(logger => logger.enableLogging())
 }
 
-const categories = new CategoryListModel()
+const Total = observer(
+  ({ categories }: { categories: CategoryListModel }): JSX.Element => {
+    return (
+      <div>
+        <span>Total:</span> <span>{categories.total}</span>
+      </div>
+    )
+  }
+)
 
 const App: React.FC = () => {
+  const categories = new CategoryListModel()
+
   const addCategory = (): void => categories.add()
   const resetBalances = (): void => categories.resetTotals()
   const deleteCategories = (): void => categories.reset()
@@ -23,11 +33,9 @@ const App: React.FC = () => {
         resetBalances={resetBalances}
         deleteCategories={deleteCategories}
       />
-      <div>
-        <span>Total:</span> <span>{categories.total}</span>
-      </div>
+      <Total categories={categories} />
     </div>
   )
 }
 
-export default observer(App)
+export default App
