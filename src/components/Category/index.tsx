@@ -1,24 +1,5 @@
-import React from 'react'
-import CategoryWithSubs from './WithSubs'
-import CategorySimple from './Simple'
-import { Category as ICategory } from './model'
-import { observer } from 'mobx-react'
+import { Category, CategoryList } from './model'
 
-function Category({ category }: { category: ICategory }): JSX.Element {
-  const deleteCategory = (): void => category.delete()
-
-  return (
-    <div className="category">
-      {category.hasParent && <button onClick={deleteCategory}>x</button>}{' '}
-      {category.hasSubcategories ? (
-        <CategoryWithSubs category={category} />
-      ) : (
-        <CategorySimple category={category} />
-      )}
-    </div>
-  )
-}
-
-export { ICategory as CategoryModel }
-
-export default observer(Category)
+export { default as List } from './List'
+export { default as ListActions } from './ListActions'
+export { Category as CategoryModel, CategoryList as CategoryListModel }

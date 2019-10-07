@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 import { Category as ICategory } from './model'
 import CategoryList from './List'
+import ListActions from './ListActions'
 import CategoryName from './Name'
 
 function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
@@ -10,7 +11,7 @@ function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
   const action = expanded ? '-' : '+'
 
   const deleteCategories = (): void => category.deleteSubcategories()
-  const addCategory = (): void => category.addCategory()
+  const addCategory = (): void => category.addSubcategory()
   const resetBalances = (): void => category.resetSubcategoriesTotal()
 
   return (
@@ -18,16 +19,18 @@ function CategoryWithSubs({ category }: { category: ICategory }): JSX.Element {
       <span>
         <CategoryName category={category} />: <span>{category.total}</span>{' '}
         <span onClick={toggle}>
-          ({(category.subcategories || []).length} sub-categories){' '}
-          <span>{action}</span>
+          ({category.subcategories == null ? 0 : category.subcategories.count}{' '}
+          sub-categories) <span>{action}</span>
         </span>
       </span>
       {expanded && (
         <div className="subcategories">
           <CategoryList categories={category.subcategories} />
-          <button onClick={addCategory}>add category</button>
-          <button onClick={resetBalances}>reset balances</button>
-          <button onClick={deleteCategories}>delete categories</button>
+          <ListActions
+            addCategory={addCategory}
+            resetBalances={resetBalances}
+            deleteCategories={deleteCategories}
+          />
         </div>
       )}
     </span>

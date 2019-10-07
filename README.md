@@ -34,7 +34,7 @@ If a category has subcategories, it's total is computed by summing the total of 
     - not needed. Deletion is only allowed when current category is part of another's sub-category
     - the other strategy would be to switch the store to be a `Array<Category>`, instead of starting at just `Category`
 - [ ] improvements
-  - [ ] shift concept of the "Total" category, instead have the store be a list of categories?
+  - [x] shift concept of the "Total" category, instead have the store be a list of categories?
   - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
   - [ ] use Math library for financial calculations
     - b/c in javascript: `1.1 + 0.3 = 1.4000000000000001`

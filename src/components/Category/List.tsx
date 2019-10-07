@@ -1,17 +1,17 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Category as ICategory } from './model'
-import Category from '.'
+import { CategoryList as ICategoryList } from './model'
+import Category from './Base'
 
 function CategoryList({
   categories,
 }: {
-  categories: ICategory[] | undefined
+  categories: ICategoryList | undefined
 }): JSX.Element {
   return (
     <div className="category-list">
-      {categories ? (
-        categories.map(category => (
+      {categories != null ? (
+        categories.list.map(category => (
           <Category key={category.id} category={category} />
         ))
       ) : (
