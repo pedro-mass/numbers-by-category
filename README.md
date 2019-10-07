@@ -53,6 +53,9 @@ If a category has subcategories, it's total is computed by summing the total of 
     - [ ] read up on best tips for defining a data store: https://mobx.js.org/best/store.html
     - [ ] look into mobx-formatters to make console logging mobx observables readable: https://github.com/motion/mobx-formatters
     - [ ] https://github.com/zalmoxisus/mobx-remotedev
+- [ ] features
+  - [ ] export
+  - [ ] import?
 - [ ] styling
   - [ ] subCategories (indenting)
   - [ ] buttons
