@@ -44,15 +44,15 @@ If a category has subcategories, it's total is computed by summing the total of 
     - might not be needed b/c it seems that every level requires an action or prop off of category
   - [ ] verify that all `observer`s are actually needed
     - this was sprinkled liberally to get things working and the docs said there was no downside (https://mobx.js.org/refguide/observer-component.html -> Characteristics of observer components -> "you cannot under-subscribe or over-subscribe")
-    - [ ] use localstorage
-    - [ ] switch to mobx-state-tree
-      - https://www.youtube.com/watch?v=rwqwwn_46kA
-      - https://github.com/mobxjs/mobx-state-tree/blob/master/docs/getting-started.md
-      - https://egghead.io/courses/manage-application-state-with-mobx-state-tree
-      - https://github.com/mobxjs/mobx-state-tree
-    - [ ] read up on best tips for defining a data store: https://mobx.js.org/best/store.html
-    - [ ] look into mobx-formatters to make console logging mobx observables readable: https://github.com/motion/mobx-formatters
-    - [ ] https://github.com/zalmoxisus/mobx-remotedev
+  - [ ] use localstorage
+  - [ ] switch to mobx-state-tree
+    - https://www.youtube.com/watch?v=rwqwwn_46kA
+    - https://github.com/mobxjs/mobx-state-tree/blob/master/docs/getting-started.md
+    - https://egghead.io/courses/manage-application-state-with-mobx-state-tree
+    - https://github.com/mobxjs/mobx-state-tree
+  - [ ] read up on best tips for defining a data store: https://mobx.js.org/best/store.html
+  - [ ] look into mobx-formatters to make console logging mobx observables readable: https://github.com/motion/mobx-formatters
+  - [ ] https://github.com/zalmoxisus/mobx-remotedev
 - [ ] features
   - [ ] export
   - [ ] import?
