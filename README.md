@@ -41,8 +41,9 @@ If a category has subcategories, it's total is computed by summing the total of 
     - it might be difficult for the user to know what's editable values and what's computed
   - [ ] use Math library for financial calculations
     - b/c in javascript: `1.1 + 0.3 = 1.4000000000000001`
-  - [ ] verify that all `observer`s are actually needed
+  - [x] verify that all `observer`s are actually needed
     - this was sprinkled liberally to get things working and the docs said there was no downside (https://mobx.js.org/refguide/observer-component.html -> Characteristics of observer components -> "you cannot under-subscribe or over-subscribe")
+    - seems that any time a piece of state needs to be reflected on the UI the answer is: WE NEED IT
   - [ ] pass the store around with context?
     - might not be needed b/c it seems that every level requires an action or prop off of category
   - [ ] switch to mobx-state-tree
