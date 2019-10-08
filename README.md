@@ -37,26 +37,29 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [ ] able to enter `023` instead of a valid number
 - [ ] improvements
   - [x] shift concept of the "Total" category, instead have the store be a list of categories?
-  - [ ] make total field editable like name (doubleClick and submit onEnter or onBlur)
+  - ~~[ ] make total field editable like name (doubleClick and submit onEnter or onBlur)~~
+    - it might be difficult for the user to know what's editable values and what's computed
   - [ ] use Math library for financial calculations
     - b/c in javascript: `1.1 + 0.3 = 1.4000000000000001`
-  - [ ] pass the store around with context?
-    - might not be needed b/c it seems that every level requires an action or prop off of category
   - [ ] verify that all `observer`s are actually needed
     - this was sprinkled liberally to get things working and the docs said there was no downside (https://mobx.js.org/refguide/observer-component.html -> Characteristics of observer components -> "you cannot under-subscribe or over-subscribe")
-  - [ ] use localstorage
+  - [ ] pass the store around with context?
+    - might not be needed b/c it seems that every level requires an action or prop off of category
   - [ ] switch to mobx-state-tree
     - https://www.youtube.com/watch?v=rwqwwn_46kA
     - https://github.com/mobxjs/mobx-state-tree/blob/master/docs/getting-started.md
     - https://egghead.io/courses/manage-application-state-with-mobx-state-tree
     - https://github.com/mobxjs/mobx-state-tree
+  - [ ] use localstorage
   - [ ] read up on best tips for defining a data store: https://mobx.js.org/best/store.html
   - [ ] look into mobx-formatters to make console logging mobx observables readable: https://github.com/motion/mobx-formatters
   - [ ] https://github.com/zalmoxisus/mobx-remotedev
 - [ ] features
   - [ ] export
+    - probably need to wait for `mobx-state-tree` to be able to get serializable JSON
   - [ ] import?
 - [ ] styling
   - [ ] subCategories (indenting)
   - [ ] buttons
 - [ ] deploy
+  - github actions vs travis vs CircleCI
