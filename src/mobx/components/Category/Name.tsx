@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
-import useToggle from '../../useToggle'
+import useToggle from '../../../core/useToggle'
 import { Category } from './model'
 
 const isEmptyString = (str: undefined | null | string): boolean =>
