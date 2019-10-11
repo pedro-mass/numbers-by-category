@@ -7,9 +7,15 @@ if (process.env.REACT_APP_USE_MOBX_LOGGER === 'true') {
 }
 
 const Total = observer(
-  ({ categories }: { categories: CategoryListModel }): JSX.Element => {
+  ({
+    categories,
+    ...domProps
+  }: {
+    categories: CategoryListModel
+    [key: string]: any
+  }): JSX.Element => {
     return (
-      <div>
+      <div {...domProps}>
         <span>Total:</span> <span>{categories.total}</span>
       </div>
     )
@@ -31,7 +37,7 @@ const Mobx: React.FC = () => {
         resetBalances={resetBalances}
         deleteCategories={deleteCategories}
       />
-      <Total categories={categories} />
+      <Total className="summary" categories={categories} />
     </div>
   )
 }
