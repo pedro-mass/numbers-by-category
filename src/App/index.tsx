@@ -1,40 +1,61 @@
 import React from 'react'
-import { observer } from 'mobx-react'
-
-import { CategoryListModel, List, ListActions } from '../components/Category'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link as RouterLink,
+  LinkProps,
+  Redirect,
+  useRouteMatch,
+} from 'react-router-dom'
+import MobX from '../mobx'
 import './index.scss'
 
-if (process.env.REACT_APP_USE_MOBX_LOGGER === 'true') {
-  import('mobx-logger').then(logger => logger.enableLogging())
+const Link = (props: LinkProps) => {
+  const { to, children } = props
+  const path = typeof to === 'string' ? to : undefined
+  const match = useRouteMatch({ path })
+  console.log({ match })
+
+  const isActiveLink = path && match
+  const nonActiveLink = children ? (
+    <span className="link link-active">{children}</span>
+  ) : (
+    children
+  )
+
+  return (isActiveLink ? nonActiveLink : <RouterLink {...props} />) as any
 }
 
-const Total = observer(
-  ({ categories }: { categories: CategoryListModel }): JSX.Element => {
-    return (
-      <div>
-        <span>Total:</span> <span>{categories.total}</span>
-      </div>
-    )
-  }
-)
-
 const App: React.FC = () => {
-  const categories = new CategoryListModel()
-
-  const addCategory = (): void => categories.add()
-  const resetBalances = (): void => categories.resetTotals()
-  const deleteCategories = (): void => categories.reset()
-
   return (
-    <div className="App center">
-      <List categories={categories} />
-      <ListActions
-        addCategory={addCategory}
-        resetBalances={resetBalances}
-        deleteCategories={deleteCategories}
-      />
-      <Total categories={categories} />
-    </div>
+    <Router>
+      <div className="app center">
+        <section className="header nav">
+          {/* todo: switch to normal ul/li for list of nav links */}
+          <Link to="/mobx">mobx</Link>
+          <span>mobx-state-tree</span>
+          <span>redux-starter-kit</span>
+          <span>context</span>
+        </section>
+
+        <section className="content">
+          <Switch>
+            <Route exact path="/">
+              {/* todo: make a proper landing page */}
+              <Redirect
+                to={{
+                  pathname: '/mobx',
+                }}
+              />
+            </Route>
+            <Route path="/mobx">
+              <MobX />
+            </Route>
+          </Switch>
+        </section>
+      </div>
+    </Router>
   )
 }
 
