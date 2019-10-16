@@ -1,4 +1,120 @@
 import { observable, action, computed } from 'mobx'
+import { types } from 'mobx-state-tree'
+
+export const Category2 = types
+  .model({
+    id: types.optional(types.identifierNumber, Math.random()),
+    name: '',
+    _total: 0,
+    // _subcategories: types.late(() => types.array(CategoryList2)),
+    // parentList: types.late(() => types.array(CategoryList2)),
+  })
+  .views(self => ({
+    // get total(): number | string {
+    //   if (self.subcategories == null || self.subcategories.isEmpty) {
+    //     return self._total === undefined ? '' : self._total
+    //   }
+    //   return self.subcategories.total
+    // },
+    // get subcategories(): CategoryList | undefined {
+    //   return this._subcategories
+    // },
+    // get hasSubcategories(): boolean {
+    //   return self.subcategories != null && !self.subcategories.isEmpty
+    // },
+    // get hasParentList(): boolean {
+    //   return this.parentList != null
+    // },
+  }))
+  .actions(self => ({
+    setName(val: string): void {
+      self.name = val
+    },
+    // resetTotal(): void {
+    //   try {
+    //     self.total = 0
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
+    // setTotal(value: number | string): void {
+    //   if (self.hasSubcategories) {
+    //     throw new Error(
+    //       "Can't set value directly. Update or delete subcategories."
+    //     )
+    //   }
+
+    //   if (typeof value === 'string') {
+    //     self._total = undefined
+    //     return
+    //   }
+
+    //   self._total = value
+    // },
+    // setSubcategories(subcategories: CategoryList | undefined): void {
+    //   self._subcategories = subcategories
+    // },
+    // addSubcategory(category: Category = new Category()): void {
+    //   if (self.subcategories == null) self.subcategories = new CategoryList()
+    //   if (!category.parentList) category.parentList = self._subcategories
+
+    //   self.subcategories.add(category)
+    // },
+    // removeSubcategory(category: Category): void {
+    //   self.subcategories && self.subcategories.delete(category)
+    // },
+    // deleteSubcategories(): void {
+    //   self.subcategories = undefined
+    // },
+    // resetSubcategoriesTotal(): void {
+    //   self.subcategories && self.subcategories.resetTotals()
+    // },
+    // split(): void {
+    //   self.addSubcategory(
+    //     new Category({
+    //       total: self.total,
+    //     })
+    //   )
+    // },
+    // delete(): void {
+    //   if (self.parentList == null)
+    //     throw new Error('Cannot delete without parent list')
+
+    //   self.parentList.delete(self)
+    // },
+  }))
+
+export const CategoryList2 = types
+  .model({
+    list: types.late(() => types.array(Category2)),
+  })
+  .views(self => ({
+    get isEmpty(): boolean {
+      return self.list == null || self.list.length === 0
+    },
+    // get count(): number {
+    //   return self.isEmpty ? 0 : self.list.length
+    // },
+  }))
+  .actions(self => ({
+    // add(category: Category = new Category()): void {
+    //   if (self.list == null) self.list = []
+    //   if (category.parentList == null) category.parentList = self
+    //   self.list.push(category)
+    // },
+    delete(category: Category): void {
+      const index = self.list.findIndex(c => c === category)
+      if (index < 0)
+        throw new Error(`Category named ${category.name} not found`)
+      self.list.splice(index, 1)
+    },
+    // reset(): void {
+    //   self.list = []
+    // },
+    // resetTotals(): void {
+    //   self.list.forEach(category => category.resetTotal())
+    // },
+  }))
 
 export class CategoryList {
   @observable list: Category[] = []

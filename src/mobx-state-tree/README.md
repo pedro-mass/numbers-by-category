@@ -4,10 +4,10 @@
 
 - [ ] switch to mobx-state-tree
   - resources
-    - https://www.youtube.com/watch?v=rwqwwn_46kA
-    - https://github.com/mobxjs/mobx-state-tree/blob/master/docs/getting-started.md
-    - https://egghead.io/courses/manage-application-state-with-mobx-state-tree
-    - https://github.com/mobxjs/mobx-state-tree
+    - [x] https://www.youtube.com/watch?v=rwqwwn_46kA
+    - [x] https://egghead.io/courses/manage-application-state-with-mobx-state-tree
+    - [ ] https://github.com/mobxjs/mobx-state-tree
+    - [ ] https://github.com/mobxjs/mobx-state-tree/blob/master/docs/getting-started.md
   - [ ] structure store
   - [ ] update components to use new store
 - [ ] features
