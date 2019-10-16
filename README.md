@@ -20,7 +20,10 @@ If a category has subcategories, it's total is computed by summing the total of 
 
 ## things left
 
-- [x] mobX
-- [ ] mobx-state-tree
-- [ ] redux-starter-kit
-- [ ] context
+- [ ] compare state management strategies
+  - [x] mobX
+  - [ ] mobx-state-tree
+  - [ ] redux-starter-kit
+  - [ ] context
+- [ ] styling
+- [ ] deploy
