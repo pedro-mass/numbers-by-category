@@ -19,5 +19,11 @@
   .content {
     width: 80%;
     margin: auto;
+
+    .summary {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin: 1rem;
+    }
   }
 }
