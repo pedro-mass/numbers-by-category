@@ -1,8 +1,29 @@
-.category {
-  margin: 0.5rem 0;
+.app {
+  .header,
+  .content {
+    margin: 1rem;
+  }
 
-  .subcategories {
-    margin-left: 2rem;
-    border: black 0.25px solid;
+  .header {
+    text-align: center;
+
+    * {
+      margin-right: 1rem;
+    }
+
+    .link-active {
+      color: red;
+    }
+  }
+
+  .content {
+    width: 80%;
+    margin: auto;
+
+    .summary {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin: 1rem;
+    }
   }
 }

@@ -1,140 +1,62 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import React, { useState } from 'react'
-
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link as RouterLink,
+  LinkProps,
+  Redirect,
+  useRouteMatch,
+} from 'react-router-dom'
+import MobX from '../mobx'
 import './index.scss'
 
-interface Category {
-  name: string
-  total: number
-  hasSubcategories?: boolean
-  subCategories?: Category[]
-}
+const Link = (props: LinkProps) => {
+  const { to, children } = props
+  const path = typeof to === 'string' ? to : undefined
+  const match = useRouteMatch({ path })
+  console.log({ match })
 
-const categories: Category[] = [
-  {
-    name: 'income',
-    total: 1000,
-  },
-  {
-    name: 'monthly',
-    total: 530,
-    hasSubcategories: true,
-    subCategories: [
-      {
-        name: 'electricity',
-        total: 100,
-      },
-      {
-        name: 'internet',
-        total: 70,
-      },
-      {
-        name: 'overhead',
-        total: 360,
-        hasSubcategories: true,
-        subCategories: [
-          {
-            name: 'pedro',
-            total: 100,
-          },
-          {
-            name: 'crystal',
-            total: 260,
-          },
-        ],
-      },
-    ],
-  },
-]
+  const isActiveLink = path && match
+  const nonActiveLink = children ? (
+    <span className="link link-active">{children}</span>
+  ) : (
+    children
+  )
+
+  return (isActiveLink ? nonActiveLink : <RouterLink {...props} />) as any
+}
 
 const App: React.FC = () => {
-  const totalCategory = {
-    name: 'total',
-    total: 5000,
-    hasSubcategories: true,
-    subCategories: categories,
-  }
-
   return (
-    <div className="App center">
-      <Category category={totalCategory} />
-    </div>
+    <Router>
+      <div className="app center">
+        <section className="header nav">
+          {/* todo: switch to normal ul/li for list of nav links */}
+          <Link to="/mobx">mobx</Link>
+          <span>mobx-state-tree</span>
+          <span>redux-starter-kit</span>
+          <span>context</span>
+        </section>
+
+        <section className="content">
+          <Switch>
+            <Route exact path="/">
+              {/* todo: make a proper landing page */}
+              <Redirect
+                to={{
+                  pathname: '/mobx',
+                }}
+              />
+            </Route>
+            <Route path="/mobx">
+              <MobX />
+            </Route>
+          </Switch>
+        </section>
+      </div>
+    </Router>
   )
-}
-
-function CategoryList({ categories }: { categories: Category[] | undefined }) {
-  return (
-    <div className="category-list">
-      {categories ? (
-        categories.map(category => (
-          <Category key={category.name} category={category} />
-        ))
-      ) : (
-        <p>No Categories found</p>
-      )}
-    </div>
-  )
-}
-
-function Category({ category }: { category: Category }) {
-  return (
-    <div className="category">
-      <button>x</button>{' '}
-      {category.hasSubcategories ? (
-        <CategoryWithSubs category={category} />
-      ) : (
-        <CategorySimple category={category} />
-      )}
-    </div>
-  )
-}
-
-function CategorySimple({ category }: { category: Category }) {
-  return (
-    <>
-      <span>{category.name}</span>: <NumberInput value={category.total} />{' '}
-      <button>split</button>
-    </>
-  )
-}
-
-function CategoryWithSubs({ category }: { category: Category }) {
-  const [expanded, setExpanded] = useState(false)
-
-  const toggle = () => setExpanded(curr => !curr)
-
-  const action = expanded ? '-' : '+'
-
-  return (
-    <span className="">
-      <span onClick={toggle}>
-        <span>{category.name}</span>: <span>{category.total}</span>{' '}
-        <span>({(category.subCategories || []).length} sub-categories)</span>{' '}
-        <span>{action}</span>
-      </span>
-      {expanded && (
-        <div className="subcategories">
-          <CategoryList categories={category.subCategories} />
-          <button>add category</button>
-          <button>reset balances</button>
-          <button>delete categories</button>
-        </div>
-      )}
-    </span>
-  )
-}
-
-function NumberInput({ value }: { value: number }) {
-  const [currValue, setValue] = useState<number | string>(value)
-
-  const onChange = (e: { target: { value: string } }) =>
-    setValue(e.target.value)
-
-  return <input value={currValue} onChange={onChange} type="number" />
-}
-
-export function PrettyPrint(props: Record<string, any>) {
-  return <pre>{JSON.stringify(props, null, 2)}</pre>
 }
 
 export default App

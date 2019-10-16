@@ -1,5 +1,7 @@
 # Numbers by Category
 
+Goal of the project is to evaluate different state management libraries/techniques
+
 ## A category has:
 
 - name
@@ -16,12 +18,12 @@ If a category has subcategories, it's total is computed by summing the total of 
   - no: enter the total as normal
   - yes: create more categories nested within this one
 
-## todo
+## things left
 
-- [ ] wire up all the actions
+- [ ] compare state management strategies
+  - [x] mobX
+  - [ ] mobx-state-tree
+  - [ ] redux-starter-kit
+  - [ ] context
 - [ ] styling
-  - [ ] subCategories (indenting)
-  - [ ] buttons
 - [ ] deploy
-
-> the [mobx branch](https://github.com/pedro-mass/numbers-by-category/tree/mobx#numbers-by-category) is much further ahead, and has improvements that I'll bring back into `master` once it's completed
