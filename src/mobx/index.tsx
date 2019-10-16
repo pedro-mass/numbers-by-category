@@ -1,26 +1,10 @@
 import React from 'react'
-import { observer } from 'mobx-react'
 import { CategoryListModel, List, ListActions } from './components/Category'
+import { Total } from './components/Total'
 
 if (process.env.REACT_APP_USE_MOBX_LOGGER === 'true') {
   import('mobx-logger').then(logger => logger.enableLogging())
 }
-
-const Total = observer(
-  ({
-    categories,
-    ...domProps
-  }: {
-    categories: CategoryListModel
-    [key: string]: any
-  }): JSX.Element => {
-    return (
-      <div {...domProps}>
-        <span>Total:</span> <span>{categories.total}</span>
-      </div>
-    )
-  }
-)
 
 const Mobx: React.FC = () => {
   const categories = new CategoryListModel()
