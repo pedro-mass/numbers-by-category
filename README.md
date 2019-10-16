@@ -20,6 +20,7 @@ If a category has subcategories, it's total is computed by summing the total of 
 
 ## things left
 
+- [x] prototype
 - [ ] compare state management strategies
   - [x] mobX
   - [ ] mobx-state-tree
