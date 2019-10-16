@@ -26,5 +26,6 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [ ] mobx-state-tree
   - [ ] redux-starter-kit
   - [ ] context
+  - [ ] component state + prop-drilling
 - [ ] styling
 - [ ] deploy
