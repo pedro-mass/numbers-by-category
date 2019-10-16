@@ -9,9 +9,10 @@ import {
   useRouteMatch,
 } from 'react-router-dom'
 import MobX from '../mobx'
+import MobXStateTree from '../mobx-state-tree'
 import './index.scss'
 
-const Link = (props: LinkProps) => {
+const Link = (props: LinkProps): JSX.Element => {
   const { to, children } = props
   const path = typeof to === 'string' ? to : undefined
   const match = useRouteMatch({ path })
@@ -34,7 +35,7 @@ const App: React.FC = () => {
         <section className="header nav">
           {/* todo: switch to normal ul/li for list of nav links */}
           <Link to="/mobx">mobx</Link>
-          <span>mobx-state-tree</span>
+          <Link to="/mobx-state-tree">mobx-state-tree</Link>
           <span>redux-starter-kit</span>
           <span>context</span>
         </section>
@@ -51,6 +52,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/mobx">
               <MobX />
+            </Route>
+            <Route path="/mobx-state-tree">
+              <MobXStateTree />
             </Route>
           </Switch>
         </section>
