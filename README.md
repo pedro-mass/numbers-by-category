@@ -29,3 +29,4 @@ If a category has subcategories, it's total is computed by summing the total of 
   - [ ] component state + prop-drilling
 - [ ] styling
 - [ ] deploy
+  - github actions vs travis vs CircleCI
